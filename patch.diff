@@ -1,0 +1,2089 @@
+From e214533a16fb66ed9e8d6760b1e6e6d26867673d Mon Sep 17 00:00:00 2001
+From: sarra232 <wilson.sarrazola@udea.edu.co>
+Date: Fri, 12 Oct 2018 19:39:25 -0500
+Subject: [PATCH] sarra232
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Firt commit:
+Creación de paquetes controlador, repositorio, modelo y dto con sus respectivas clases
+---
+ .gitignore                                    |  25 ++
+ .mvn/wrapper/maven-wrapper.jar                | Bin 0 -> 47610 bytes
+ .mvn/wrapper/maven-wrapper.properties         |   1 +
+ mvnw                                          | 225 ++++++++++++++++++
+ mvnw.cmd                                      | 143 +++++++++++
+ pom.xml                                       |  50 ++++
+ .../api/HoteltahamiApiApplication.java        |  12 +
+ .../api/controlador/BillController.java       |  10 +
+ .../api/controlador/EmployedController.java   |   5 +
+ .../api/controlador/PaymentController.java    |   5 +
+ .../api/controlador/PersonController.java     |   8 +
+ .../api/controlador/ProductController.java    |   5 +
+ .../controlador/ReservationController.java    |   5 +
+ .../api/controlador/SpiceController.java      |   5 +
+ .../hoteltahami/analisis/api/dto/BillDto.java |   5 +
+ .../analisis/api/dto/EmployedDto.java         |   5 +
+ .../analisis/api/dto/PaymentDto.java          |   5 +
+ .../analisis/api/dto/PersonDto.java           |   5 +
+ .../analisis/api/dto/ProuctDto.java           |   5 +
+ .../analisis/api/dto/ReservationDto.java      |   5 +
+ .../analisis/api/dto/SpiceDto.java            |   5 +
+ .../hoteltahami/analisis/api/modelo/Bill.java |  53 +++++
+ .../analisis/api/modelo/Employed.java         |  36 +++
+ .../analisis/api/modelo/Payment.java          |  52 ++++
+ .../analisis/api/modelo/Person.java           |  77 ++++++
+ .../analisis/api/modelo/Product.java          |  62 +++++
+ .../analisis/api/modelo/Reservation.java      |  62 +++++
+ .../analisis/api/modelo/Spice.java            |  54 +++++
+ .../api/repositorio/BillRepository.java       |   5 +
+ .../api/repositorio/EmployedRepository.java   |   5 +
+ .../api/repositorio/PaymentRepository.java    |   5 +
+ .../api/repositorio/PersonRepository.java     |   5 +
+ .../api/repositorio/ProductRepository.java    |   5 +
+ .../repositorio/ReservationRepository.java    |   5 +
+ .../api/repositorio/SpiceRepository.java      |   5 +
+ src/main/resources/application.properties     |   0
+ .../api/HoteltahamiApiApplicationTests.java   |  16 ++
+ 37 files changed, 981 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .mvn/wrapper/maven-wrapper.jar
+ create mode 100644 .mvn/wrapper/maven-wrapper.properties
+ create mode 100644 mvnw
+ create mode 100644 mvnw.cmd
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/HoteltahamiApiApplication.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/BillController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/EmployedController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/PaymentController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/PersonController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/ProductController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/ReservationController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/controlador/SpiceController.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/BillDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/EmployedDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/PaymentDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/PersonDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/ProuctDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/ReservationDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/dto/SpiceDto.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Bill.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Employed.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Payment.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Person.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Product.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Reservation.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/modelo/Spice.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/BillRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/EmployedRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/PaymentRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/PersonRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/ProductRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/ReservationRepository.java
+ create mode 100644 src/main/java/com/hoteltahami/analisis/api/repositorio/SpiceRepository.java
+ create mode 100644 src/main/resources/application.properties
+ create mode 100644 src/test/java/com/hoteltahami/analisis/api/HoteltahamiApiApplicationTests.java
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..82eca33
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,25 @@
++/target/
++!.mvn/wrapper/maven-wrapper.jar
++
++### STS ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### IntelliJ IDEA ###
++.idea
++*.iws
++*.iml
++*.ipr
++
++### NetBeans ###
++/nbproject/private/
++/build/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
+\ No newline at end of file
+diff --git a/.mvn/wrapper/maven-wrapper.jar b/.mvn/wrapper/maven-wrapper.jar
+new file mode 100644
+index 0000000000000000000000000000000000000000..9cc84ea9b4d95453115d0c26488d6a78694e0bc6
+GIT binary patch
+literal 47610
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/.mvn/wrapper/maven-wrapper.properties b/.mvn/wrapper/maven-wrapper.properties
+new file mode 100644
+index 0000000..6c8c0e0
+--- /dev/null
++++ b/.mvn/wrapper/maven-wrapper.properties
+@@ -0,0 +1 @@
++distributionUrl=https://repo1.maven.org/maven2/org/apache/maven/apache-maven/3.5.4/apache-maven-3.5.4-bin.zip
+diff --git a/mvnw b/mvnw
+new file mode 100644
+index 0000000..5bf251c
+--- /dev/null
++++ b/mvnw
+@@ -0,0 +1,225 @@
++#!/bin/sh
++# ----------------------------------------------------------------------------
++# Licensed to the Apache Software Foundation (ASF) under one
++# or more contributor license agreements.  See the NOTICE file
++# distributed with this work for additional information
++# regarding copyright ownership.  The ASF licenses this file
++# to you under the Apache License, Version 2.0 (the
++# "License"); you may not use this file except in compliance
++# with the License.  You may obtain a copy of the License at
++#
++#    http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing,
++# software distributed under the License is distributed on an
++# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++# KIND, either express or implied.  See the License for the
++# specific language governing permissions and limitations
++# under the License.
++# ----------------------------------------------------------------------------
++
++# ----------------------------------------------------------------------------
++# Maven2 Start Up Batch script
++#
++# Required ENV vars:
++# ------------------
++#   JAVA_HOME - location of a JDK home dir
++#
++# Optional ENV vars
++# -----------------
++#   M2_HOME - location of maven2's installed home dir
++#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
++#     e.g. to debug Maven itself, use
++#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++# ----------------------------------------------------------------------------
++
++if [ -z "$MAVEN_SKIP_RC" ] ; then
++
++  if [ -f /etc/mavenrc ] ; then
++    . /etc/mavenrc
++  fi
++
++  if [ -f "$HOME/.mavenrc" ] ; then
++    . "$HOME/.mavenrc"
++  fi
++
++fi
++
++# OS specific support.  $var _must_ be set to either true or false.
++cygwin=false;
++darwin=false;
++mingw=false
++case "`uname`" in
++  CYGWIN*) cygwin=true ;;
++  MINGW*) mingw=true;;
++  Darwin*) darwin=true
++    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
++    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
++    if [ -z "$JAVA_HOME" ]; then
++      if [ -x "/usr/libexec/java_home" ]; then
++        export JAVA_HOME="`/usr/libexec/java_home`"
++      else
++        export JAVA_HOME="/Library/Java/Home"
++      fi
++    fi
++    ;;
++esac
++
++if [ -z "$JAVA_HOME" ] ; then
++  if [ -r /etc/gentoo-release ] ; then
++    JAVA_HOME=`java-config --jre-home`
++  fi
++fi
++
++if [ -z "$M2_HOME" ] ; then
++  ## resolve links - $0 may be a link to maven's home
++  PRG="$0"
++
++  # need this for relative symlinks
++  while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++      PRG="$link"
++    else
++      PRG="`dirname "$PRG"`/$link"
++    fi
++  done
++
++  saveddir=`pwd`
++
++  M2_HOME=`dirname "$PRG"`/..
++
++  # make it fully qualified
++  M2_HOME=`cd "$M2_HOME" && pwd`
++
++  cd "$saveddir"
++  # echo Using m2 at $M2_HOME
++fi
++
++# For Cygwin, ensure paths are in UNIX format before anything is touched
++if $cygwin ; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME=`cygpath --unix "$M2_HOME"`
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
++fi
++
++# For Migwn, ensure paths are in UNIX format before anything is touched
++if $mingw ; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME="`(cd "$M2_HOME"; pwd)`"
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME="`(cd "$JAVA_HOME"; pwd)`"
++  # TODO classpath?
++fi
++
++if [ -z "$JAVA_HOME" ]; then
++  javaExecutable="`which javac`"
++  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
++    # readlink(1) is not available as standard on Solaris 10.
++    readLink=`which readlink`
++    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
++      if $darwin ; then
++        javaHome="`dirname \"$javaExecutable\"`"
++        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
++      else
++        javaExecutable="`readlink -f \"$javaExecutable\"`"
++      fi
++      javaHome="`dirname \"$javaExecutable\"`"
++      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
++      JAVA_HOME="$javaHome"
++      export JAVA_HOME
++    fi
++  fi
++fi
++
++if [ -z "$JAVACMD" ] ; then
++  if [ -n "$JAVA_HOME"  ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++      # IBM's JDK on AIX uses strange locations for the executables
++      JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++      JAVACMD="$JAVA_HOME/bin/java"
++    fi
++  else
++    JAVACMD="`which java`"
++  fi
++fi
++
++if [ ! -x "$JAVACMD" ] ; then
++  echo "Error: JAVA_HOME is not defined correctly." >&2
++  echo "  We cannot execute $JAVACMD" >&2
++  exit 1
++fi
++
++if [ -z "$JAVA_HOME" ] ; then
++  echo "Warning: JAVA_HOME environment variable is not set."
++fi
++
++CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
++
++# traverses directory structure from process work directory to filesystem root
++# first directory with .mvn subdirectory is considered project base directory
++find_maven_basedir() {
++
++  if [ -z "$1" ]
++  then
++    echo "Path not specified to find_maven_basedir"
++    return 1
++  fi
++
++  basedir="$1"
++  wdir="$1"
++  while [ "$wdir" != '/' ] ; do
++    if [ -d "$wdir"/.mvn ] ; then
++      basedir=$wdir
++      break
++    fi
++    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
++    if [ -d "${wdir}" ]; then
++      wdir=`cd "$wdir/.."; pwd`
++    fi
++    # end of workaround
++  done
++  echo "${basedir}"
++}
++
++# concatenates all lines of a file
++concat_lines() {
++  if [ -f "$1" ]; then
++    echo "$(tr -s '\n' ' ' < "$1")"
++  fi
++}
++
++BASE_DIR=`find_maven_basedir "$(pwd)"`
++if [ -z "$BASE_DIR" ]; then
++  exit 1;
++fi
++
++export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
++echo $MAVEN_PROJECTBASEDIR
++MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
++
++# For Cygwin, switch paths to Windows format before running java
++if $cygwin; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME=`cygpath --path --windows "$M2_HOME"`
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
++  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
++    MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
++fi
++
++WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++exec "$JAVACMD" \
++  $MAVEN_OPTS \
++  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
++  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
++  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+diff --git a/mvnw.cmd b/mvnw.cmd
+new file mode 100644
+index 0000000..019bd74
+--- /dev/null
++++ b/mvnw.cmd
+@@ -0,0 +1,143 @@
++@REM ----------------------------------------------------------------------------
++@REM Licensed to the Apache Software Foundation (ASF) under one
++@REM or more contributor license agreements.  See the NOTICE file
++@REM distributed with this work for additional information
++@REM regarding copyright ownership.  The ASF licenses this file
++@REM to you under the Apache License, Version 2.0 (the
++@REM "License"); you may not use this file except in compliance
++@REM with the License.  You may obtain a copy of the License at
++@REM
++@REM    http://www.apache.org/licenses/LICENSE-2.0
++@REM
++@REM Unless required by applicable law or agreed to in writing,
++@REM software distributed under the License is distributed on an
++@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++@REM KIND, either express or implied.  See the License for the
++@REM specific language governing permissions and limitations
++@REM under the License.
++@REM ----------------------------------------------------------------------------
++
++@REM ----------------------------------------------------------------------------
++@REM Maven2 Start Up Batch script
++@REM
++@REM Required ENV vars:
++@REM JAVA_HOME - location of a JDK home dir
++@REM
++@REM Optional ENV vars
++@REM M2_HOME - location of maven2's installed home dir
++@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
++@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a key stroke before ending
++@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
++@REM     e.g. to debug Maven itself, use
++@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++@REM ----------------------------------------------------------------------------
++
++@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
++@echo off
++@REM enable echoing my setting MAVEN_BATCH_ECHO to 'on'
++@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
++
++@REM set %HOME% to equivalent of $HOME
++if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
++
++@REM Execute a user defined script before this one
++if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
++@REM check for pre script, once with legacy .bat ending and once with .cmd ending
++if exist "%HOME%\mavenrc_pre.bat" call "%HOME%\mavenrc_pre.bat"
++if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
++:skipRcPre
++
++@setlocal
++
++set ERROR_CODE=0
++
++@REM To isolate internal variables from possible post scripts, we use another setlocal
++@setlocal
++
++@REM ==== START VALIDATION ====
++if not "%JAVA_HOME%" == "" goto OkJHome
++
++echo.
++echo Error: JAVA_HOME not found in your environment. >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++:OkJHome
++if exist "%JAVA_HOME%\bin\java.exe" goto init
++
++echo.
++echo Error: JAVA_HOME is set to an invalid directory. >&2
++echo JAVA_HOME = "%JAVA_HOME%" >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++@REM ==== END VALIDATION ====
++
++:init
++
++@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
++@REM Fallback to current working directory if not found.
++
++set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
++IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
++
++set EXEC_DIR=%CD%
++set WDIR=%EXEC_DIR%
++:findBaseDir
++IF EXIST "%WDIR%"\.mvn goto baseDirFound
++cd ..
++IF "%WDIR%"=="%CD%" goto baseDirNotFound
++set WDIR=%CD%
++goto findBaseDir
++
++:baseDirFound
++set MAVEN_PROJECTBASEDIR=%WDIR%
++cd "%EXEC_DIR%"
++goto endDetectBaseDir
++
++:baseDirNotFound
++set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
++cd "%EXEC_DIR%"
++
++:endDetectBaseDir
++
++IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
++
++@setlocal EnableExtensions EnableDelayedExpansion
++for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
++@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
++
++:endReadAdditionalConfig
++
++SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
++
++set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
++set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++%MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
++if ERRORLEVEL 1 goto error
++goto end
++
++:error
++set ERROR_CODE=1
++
++:end
++@endlocal & set ERROR_CODE=%ERROR_CODE%
++
++if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
++@REM check for post script, once with legacy .bat ending and once with .cmd ending
++if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
++if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
++:skipRcPost
++
++@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
++if "%MAVEN_BATCH_PAUSE%" == "on" pause
++
++if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
++
++exit /B %ERROR_CODE%
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+index 0000000..def4125
+--- /dev/null
++++ b/pom.xml
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++
++	<groupId>com.hoteltahami.analisis</groupId>
++	<artifactId>hoteltahami-api</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<packaging>jar</packaging>
++
++	<name>hoteltahami-api</name>
++	<description>Demo project for Spring Boot</description>
++
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.0.5.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++
++	<properties>
++		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
++		<java.version>1.8</java.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++
++</project>
+diff --git a/src/main/java/com/hoteltahami/analisis/api/HoteltahamiApiApplication.java b/src/main/java/com/hoteltahami/analisis/api/HoteltahamiApiApplication.java
+new file mode 100644
+index 0000000..f69138b
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/HoteltahamiApiApplication.java
+@@ -0,0 +1,12 @@
++package com.hoteltahami.analisis.api;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class HoteltahamiApiApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(HoteltahamiApiApplication.class, args);
++	}
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/BillController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/BillController.java
+new file mode 100644
+index 0000000..fb17594
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/BillController.java
+@@ -0,0 +1,10 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class BillController {
++	
++	public BillController() {
++		
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/EmployedController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/EmployedController.java
+new file mode 100644
+index 0000000..2de8004
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/EmployedController.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class EmployedController {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/PaymentController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/PaymentController.java
+new file mode 100644
+index 0000000..343fe99
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/PaymentController.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class PaymentController {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/PersonController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/PersonController.java
+new file mode 100644
+index 0000000..4884310
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/PersonController.java
+@@ -0,0 +1,8 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class PersonController {
++	
++	public void createPerson() {
++		 
++	}
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/ProductController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/ProductController.java
+new file mode 100644
+index 0000000..272d71f
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/ProductController.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class ProductController {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/ReservationController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/ReservationController.java
+new file mode 100644
+index 0000000..9a2e031
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/ReservationController.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class ReservationController {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/controlador/SpiceController.java b/src/main/java/com/hoteltahami/analisis/api/controlador/SpiceController.java
+new file mode 100644
+index 0000000..d61a4bb
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/controlador/SpiceController.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.controlador;
++
++public class SpiceController {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/BillDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/BillDto.java
+new file mode 100644
+index 0000000..432105c
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/BillDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class BillDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/EmployedDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/EmployedDto.java
+new file mode 100644
+index 0000000..336f78c
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/EmployedDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class EmployedDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/PaymentDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/PaymentDto.java
+new file mode 100644
+index 0000000..ba22a45
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/PaymentDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class PaymentDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/PersonDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/PersonDto.java
+new file mode 100644
+index 0000000..8e28e98
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/PersonDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class PersonDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/ProuctDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/ProuctDto.java
+new file mode 100644
+index 0000000..37c28fb
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/ProuctDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class ProuctDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/ReservationDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/ReservationDto.java
+new file mode 100644
+index 0000000..431a4e3
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/ReservationDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class ReservationDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/dto/SpiceDto.java b/src/main/java/com/hoteltahami/analisis/api/dto/SpiceDto.java
+new file mode 100644
+index 0000000..bbd5ba4
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/dto/SpiceDto.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.dto;
++
++public class SpiceDto {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Bill.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Bill.java
+new file mode 100644
+index 0000000..49d62fd
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Bill.java
+@@ -0,0 +1,53 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Bill {
++	private String code;
++	private double innovaice;
++	private String typepayment;
++	private double value;
++	private double discount;
++	
++	public Bill() {
++		super();
++	}
++	public Bill(String code, double innovaice, String typepayment, double value, double discount) {
++		super();
++		this.code = code;
++		this.innovaice = innovaice;
++		this.typepayment = typepayment;
++		this.value = value;
++		this.discount = discount;
++	}
++	public String getCode() {
++		return code;
++	}
++	public void setCode(String code) {
++		this.code = code;
++	}
++	public double getInnovaice() {
++		return innovaice;
++	}
++	public void setInnovaice(double innovaice) {
++		this.innovaice = innovaice;
++	}
++	public String getTypepayment() {
++		return typepayment;
++	}
++	public void setTypepayment(String typepayment) {
++		this.typepayment = typepayment;
++	}
++	public double getValue() {
++		return value;
++	}
++	public void setValue(double value) {
++		this.value = value;
++	}
++	public double getDiscount() {
++		return discount;
++	}
++	public void setDiscount(double discount) {
++		this.discount = discount;
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Employed.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Employed.java
+new file mode 100644
+index 0000000..2c6e203
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Employed.java
+@@ -0,0 +1,36 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Employed extends Person{
++	private String rol;
++	private Boolean status;
++	
++	public Employed() {
++		super();
++		
++	}
++	
++	public Employed(String rol, Boolean status) {
++		super();
++		this.rol = rol;
++		this.status = status;
++	}
++
++	public String getRol() {
++		return rol;
++	}
++
++	public void setRol(String rol) {
++		this.rol = rol;
++	}
++
++	public Boolean getStatus() {
++		return status;
++	}
++
++	public void setStatus(Boolean status) {
++		this.status = status;
++	}
++	
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Payment.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Payment.java
+new file mode 100644
+index 0000000..37fd331
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Payment.java
+@@ -0,0 +1,52 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Payment {
++	private String code;
++	private String invoice;
++	private String typepayment;
++	private double descount;
++	private double value;
++	public Payment() {
++		super();
++	}
++	public Payment(String code, String invoice, String typepayment, double descount, double value) {
++		super();
++		this.code = code;
++		this.invoice = invoice;
++		this.typepayment = typepayment;
++		this.descount = descount;
++		this.value = value;
++	}
++	public String getCode() {
++		return code;
++	}
++	public void setCode(String code) {
++		this.code = code;
++	}
++	public String getInvoice() {
++		return invoice;
++	}
++	public void setInvoice(String invoice) {
++		this.invoice = invoice;
++	}
++	public String getTypepayment() {
++		return typepayment;
++	}
++	public void setTypepayment(String typepayment) {
++		this.typepayment = typepayment;
++	}
++	public double getDescount() {
++		return descount;
++	}
++	public void setDescount(double descount) {
++		this.descount = descount;
++	}
++	public double getValue() {
++		return value;
++	}
++	public void setValue(double value) {
++		this.value = value;
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Person.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Person.java
+new file mode 100644
+index 0000000..b6e6159
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Person.java
+@@ -0,0 +1,77 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Person {
++	private String id;
++	private String name;
++	private String lastname;
++	private String sex;
++	private String telephone;
++	private String address;
++	private String email;
++	private String password;
++	public Person() {
++		super();
++	}
++	public Person(String id, String name, String lastname, String sex, String telephone, String address, String email,
++			String password) {
++		super();
++		this.id = id;
++		this.name = name;
++		this.lastname = lastname;
++		this.sex = sex;
++		this.telephone = telephone;
++		this.address = address;
++		this.email = email;
++		this.password = password;
++	}
++	public String getId() {
++		return id;
++	}
++	public void setId(String id) {
++		this.id = id;
++	}
++	public String getName() {
++		return name;
++	}
++	public void setName(String name) {
++		this.name = name;
++	}
++	public String getLastname() {
++		return lastname;
++	}
++	public void setLastname(String lastname) {
++		this.lastname = lastname;
++	}
++	public String getSex() {
++		return sex;
++	}
++	public void setSex(String sex) {
++		this.sex = sex;
++	}
++	public String getTelephone() {
++		return telephone;
++	}
++	public void setTelephone(String telephone) {
++		this.telephone = telephone;
++	}
++	public String getAddress() {
++		return address;
++	}
++	public void setAddress(String address) {
++		this.address = address;
++	}
++	public String getEmail() {
++		return email;
++	}
++	public void setEmail(String email) {
++		this.email = email;
++	}
++	public String getPassword() {
++		return password;
++	}
++	public void setPassword(String password) {
++		this.password = password;
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Product.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Product.java
+new file mode 100644
+index 0000000..ac02173
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Product.java
+@@ -0,0 +1,62 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Product {
++	private String code;
++	private String name;
++	private String description;
++	private Boolean status;
++	private double iva; //revisar
++	private double pricesale;
++	
++	public Product() {
++		super();
++	}
++	public Product(String code, String name, String description, Boolean status, double iva, double pricesale) {
++		super();
++		this.code = code;
++		this.name = name;
++		this.description = description;
++		this.status = status;
++		this.iva = iva;
++		this.pricesale = pricesale;
++	}
++	public String getCode() {
++		return code;
++	}
++	public void setCode(String code) {
++		this.code = code;
++	}
++	public String getName() {
++		return name;
++	}
++	public void setName(String name) {
++		this.name = name;
++	}
++	public String getDescription() {
++		return description;
++	}
++	public void setDescription(String description) {
++		this.description = description;
++	}
++	public Boolean getStatus() {
++		return status;
++	}
++	public void setStatus(Boolean status) {
++		this.status = status;
++	}
++	public double getIva() {
++		return iva;
++	}
++	public void setIva(double iva) {
++		this.iva = iva;
++	}
++	public double getPricesale() {
++		return pricesale;
++	}
++	public void setPricesale(double pricesale) {
++		this.pricesale = pricesale;
++	}
++	
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Reservation.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Reservation.java
+new file mode 100644
+index 0000000..d791e77
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Reservation.java
+@@ -0,0 +1,62 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Reservation {
++	private String code;
++	private String spice;
++	private String dateentry; //Revisar
++	private String dateout;   // revisar el tipo de dato
++	private String client;
++	private Boolean status;
++	
++	public Reservation() {
++		super();
++		
++	}
++	public Reservation(String code, String spice, String dateentry, String dateout, String client, Boolean status) {
++		super();
++		this.code = code;
++		this.spice = spice;
++		this.dateentry = dateentry;
++		this.dateout = dateout;
++		this.client = client;
++		this.status = status;
++	}
++	public String getCode() {
++		return code;
++	}
++	public void setCode(String code) {
++		this.code = code;
++	}
++	public String getSpice() {
++		return spice;
++	}
++	public void setSpice(String spice) {
++		this.spice = spice;
++	}
++	public String getDateentry() {
++		return dateentry;
++	}
++	public void setDateentry(String dateentry) {
++		this.dateentry = dateentry;
++	}
++	public String getDateout() {
++		return dateout;
++	}
++	public void setDateout(String dateout) {
++		this.dateout = dateout;
++	}
++	public String getClient() {
++		return client;
++	}
++	public void setClient(String client) {
++		this.client = client;
++	}
++	public Boolean getStatus() {
++		return status;
++	}
++	public void setStatus(Boolean status) {
++		this.status = status;
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/modelo/Spice.java b/src/main/java/com/hoteltahami/analisis/api/modelo/Spice.java
+new file mode 100644
+index 0000000..ba46fa1
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/modelo/Spice.java
+@@ -0,0 +1,54 @@
++package com.hoteltahami.analisis.api.modelo;
++
++public class Spice {
++	private String code;
++	private String name;
++	private Boolean status;
++	private String finaldate;  //revisar el tipo de dato, por Date
++	private String inicialdate;
++	
++	public Spice() {
++		super();
++	
++	}
++	public Spice(String code, String name, Boolean status, String finaldate, String inicialdate) {
++		super();
++		this.code = code;
++		this.name = name;
++		this.status = status;
++		this.finaldate = finaldate;
++		this.inicialdate = inicialdate;
++	}
++	public String getCode() {
++		return code;
++	}
++	public void setCode(String code) {
++		this.code = code;
++	}
++	public String getName() {
++		return name;
++	}
++	public void setName(String name) {
++		this.name = name;
++	}
++	public Boolean getStatus() {
++		return status;
++	}
++	public void setStatus(Boolean status) {
++		this.status = status;
++	}
++	public String getFinaldate() {
++		return finaldate;
++	}
++	public void setFinaldate(String finaldate) {
++		this.finaldate = finaldate;
++	}
++	public String getInicialdate() {
++		return inicialdate;
++	}
++	public void setInicialdate(String inicialdate) {
++		this.inicialdate = inicialdate;
++	}
++	
++	
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/BillRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/BillRepository.java
+new file mode 100644
+index 0000000..caade74
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/BillRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class BillRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/EmployedRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/EmployedRepository.java
+new file mode 100644
+index 0000000..bbd1fbb
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/EmployedRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class EmployedRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/PaymentRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/PaymentRepository.java
+new file mode 100644
+index 0000000..6e251e2
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/PaymentRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class PaymentRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/PersonRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/PersonRepository.java
+new file mode 100644
+index 0000000..b66c023
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/PersonRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class PersonRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/ProductRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/ProductRepository.java
+new file mode 100644
+index 0000000..33e1904
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/ProductRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class ProductRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/ReservationRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/ReservationRepository.java
+new file mode 100644
+index 0000000..a9adffb
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/ReservationRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class ReservationRepository {
++
++}
+diff --git a/src/main/java/com/hoteltahami/analisis/api/repositorio/SpiceRepository.java b/src/main/java/com/hoteltahami/analisis/api/repositorio/SpiceRepository.java
+new file mode 100644
+index 0000000..e674b61
+--- /dev/null
++++ b/src/main/java/com/hoteltahami/analisis/api/repositorio/SpiceRepository.java
+@@ -0,0 +1,5 @@
++package com.hoteltahami.analisis.api.repositorio;
++
++public class SpiceRepository {
++
++}
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+new file mode 100644
+index 0000000..e69de29
+diff --git a/src/test/java/com/hoteltahami/analisis/api/HoteltahamiApiApplicationTests.java b/src/test/java/com/hoteltahami/analisis/api/HoteltahamiApiApplicationTests.java
+new file mode 100644
+index 0000000..e761412
+--- /dev/null
++++ b/src/test/java/com/hoteltahami/analisis/api/HoteltahamiApiApplicationTests.java
+@@ -0,0 +1,16 @@
++package com.hoteltahami.analisis.api;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++import org.springframework.boot.test.context.SpringBootTest;
++import org.springframework.test.context.junit4.SpringRunner;
++
++@RunWith(SpringRunner.class)
++@SpringBootTest
++public class HoteltahamiApiApplicationTests {
++
++	@Test
++	public void contextLoads() {
++	}
++
++}
+-- 
+2.18.0.windows.1
+
