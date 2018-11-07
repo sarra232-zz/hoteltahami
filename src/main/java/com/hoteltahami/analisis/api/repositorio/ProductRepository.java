@@ -1,5 +1,11 @@
 package com.hoteltahami.analisis.api.repositorio;
 
-public class ProductRepository {
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.hoteltahami.analisis.api.modelo.Product;
+
+public interface ProductRepository {
 }

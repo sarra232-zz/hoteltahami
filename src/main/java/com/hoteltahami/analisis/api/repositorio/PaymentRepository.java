@@ -1,5 +1,15 @@
 package com.hoteltahami.analisis.api.repositorio;
 
-public class PaymentRepository {
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.hoteltahami.analisis.api.modelo.Payment;
+
+
+
+
+public interface PaymentRepository extends JpaRepository<Payment, String> {
+	
 }

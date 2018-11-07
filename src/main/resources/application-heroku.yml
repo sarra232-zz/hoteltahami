@@ -1,0 +1,32 @@
+# Datasource configuration in heroku environment
+server:
+  port: 8080
+  
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 50
+          lob:
+            non_contextual_creation: false
+        temp:
+          use_jdbc_metadata_defaults: false
+      
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://ec2-54-235-153-124.compute-1.amazonaws.com:5432/d7udup8b94nevl?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+    driver-class-name: org.postgresql.Driver
+    username: bkaqnxbfjaldwd
+    password: 85e653c698fd02916f8b42729408959a860168e3e33d0a1dd4b6e58a3c08a631
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 5
+  messages:
+    basename: bundles/languageBundle
+  
+    

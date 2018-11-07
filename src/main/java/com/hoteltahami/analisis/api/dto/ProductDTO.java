@@ -1,49 +1,21 @@
-package com.hoteltahami.analisis.api.modelo;
+package com.hoteltahami.analisis.api.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "proucto")
-public class Product {
-	
-	@Id
-	@Column(name="codigo")
-	@GeneratedValue
+public class ProductDTO{
 	private String code;
-	
-	@Id
-	@Column(name="nombre_p")
-	@GeneratedValue
 	private String name;
-	
-	@Id
-	@Column(name="descripcion")
-	@GeneratedValue
 	private String description;
-	
-	@Id
-	@Column(name="estado")
-	@GeneratedValue
 	private Boolean status;
-	
-	@Id
-	@Column(name="iva")
-	@GeneratedValue
 	private double iva; //revisar
-	
-	@Id
-	@Column(name="precio")
-	@GeneratedValue
 	private double pricesale;
 	
-	public Product() {
+	public ProductDTO() {
 		super();
 	}
-	public Product(String code, String name, String description, Boolean status, double iva, double pricesale) {
+	public ProductDTO(String code, String name, String description, Boolean status, double iva, double pricesale) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -88,7 +60,5 @@ public class Product {
 	public void setPricesale(double pricesale) {
 		this.pricesale = pricesale;
 	}
-	
-	
 	
 }

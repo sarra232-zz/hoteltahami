@@ -1,11 +1,43 @@
 package com.hoteltahami.analisis.api.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "reservacion")
 public class Reservation {
+	
+	@Id
+	@Column(name="codigoReserva")
+	@GeneratedValue
 	private String code;
-	private String spice;
+	
+	@Id
+	@Column(name="espacioReserva")
+	@GeneratedValue
+	private String space;
+	
+	@Id
+	@Column(name="fechaEntrada")
+	@GeneratedValue
 	private String dateentry; //Revisar
+	
+	@Id
+	@Column(name="fechaSalida")
+	@GeneratedValue
 	private String dateout;   // revisar el tipo de dato
+	
+	@Id
+	@Column(name="cliente")
+	@GeneratedValue
 	private String client;
+	
+	@Id
+	@Column(name="estadoReserva")
+	@GeneratedValue
 	private Boolean status;
 	
 	public Reservation() {
@@ -15,7 +47,7 @@ public class Reservation {
 	public Reservation(String code, String spice, String dateentry, String dateout, String client, Boolean status) {
 		super();
 		this.code = code;
-		this.spice = spice;
+		this.space = spice;
 		this.dateentry = dateentry;
 		this.dateout = dateout;
 		this.client = client;
@@ -28,10 +60,10 @@ public class Reservation {
 		this.code = code;
 	}
 	public String getSpice() {
-		return spice;
+		return space;
 	}
 	public void setSpice(String spice) {
-		this.spice = spice;
+		this.space = spice;
 	}
 	public String getDateentry() {
 		return dateentry;

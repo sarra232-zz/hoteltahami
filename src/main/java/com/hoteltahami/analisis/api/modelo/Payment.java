@@ -1,11 +1,39 @@
 package com.hoteltahami.analisis.api.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pago")
 public class Payment {
+	@Id
+	@Column(name="codigoPago")
+	@GeneratedValue
 	private String code;
+	
+	@Id
+	@Column(name="factura")
+	@GeneratedValue
 	private String invoice;
+	
+	@Id
+	@Column(name="tipoPago")
+	@GeneratedValue
 	private String typepayment;
+	
+	@Id
+	@Column(name="descuento")
+	@GeneratedValue
 	private double descount;
+	
+	@Id
+	@Column(name="valor")
+	@GeneratedValue
 	private double value;
+	
 	public Payment() {
 		super();
 	}

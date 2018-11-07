@@ -1,10 +1,39 @@
 package com.hoteltahami.analisis.api.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "factura")
+
 public class Bill {
+	
+	@Id
+	@Column(name="codigoFactura")
+	@GeneratedValue
 	private String code;
-	private double innovaice;
+	
+	@Id
+	@Column(name="factura")
+	@GeneratedValue
+	private double invoice;
+	
+	@Id
+	@Column(name="tipoPagoFactura")
+	@GeneratedValue
 	private String typepayment;
+	
+	@Id
+	@Column(name="valor")
+	@GeneratedValue
 	private double value;
+	
+	@Id
+	@Column(name="descuento")
+	@GeneratedValue
 	private double discount;
 	
 	public Bill() {
@@ -13,7 +42,7 @@ public class Bill {
 	public Bill(String code, double innovaice, String typepayment, double value, double discount) {
 		super();
 		this.code = code;
-		this.innovaice = innovaice;
+		this.invoice = innovaice;
 		this.typepayment = typepayment;
 		this.value = value;
 		this.discount = discount;
@@ -25,10 +54,10 @@ public class Bill {
 		this.code = code;
 	}
 	public double getInnovaice() {
-		return innovaice;
+		return invoice;
 	}
 	public void setInnovaice(double innovaice) {
-		this.innovaice = innovaice;
+		this.invoice = innovaice;
 	}
 	public String getTypepayment() {
 		return typepayment;
